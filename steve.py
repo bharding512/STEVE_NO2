@@ -119,7 +119,7 @@ def eq_dens(s, n, drc, nin, nout, species):
     for jr, rx in enumerate(reactions): # loop over reactions
         # Find product of input species densities and multiply by reaction coefficient
         if js in nout[rx] and js in nin[rx]: # does not affect equilibrium: exclude
-            pass
+            continue
         if js in nout[rx]: # It's a production rate
             prodrate += drc[rx] * np.array([n[:,jx] for jx in nin[rx]]).prod(axis=0)
         if js in nin[rx]: # It's a loss rate
